@@ -1,32 +1,25 @@
-class Animal:
-    def __init__(self, movement, food):
-        self.movement = movement
-        self.food = food
-
-class Dog(Animal):
-    name = ""
-    def __init__(self, id, movement, food):
-        self.id = id
-        Animal.__init__(self, movement, food)
-    def print_id(self):
-        print(self.id)
+#!/usr/bin/python
+from class_file import *
 
 
-class Seagull(Animal):
-    def __init__(self, movement, food):
-        Animal.__init__(self, movement, food)
-    def scream(self):
-        print("*seagull screaming in the distance*")
+def init_dog_list():
+    dog_list = []
+    for i in range(0, 10):
+        dog_list.append(Dog(i, "walking", "bones"))
+    dog_list[0].name = "Tata"
+    return dog_list
 
 
-dog_list = []
-new_seagull = Seagull("flying", "fish")
+def use_obj():
+    dog_list = init_dog_list()
+    seagull_1 = Seagull("fish")
 
-for i in range(0, 10):
-    dog_list.append(Dog(i, "walking", "bones"))
-for i in dog_list:
-    i.print_id()
+    for i in dog_list:
+        i.print_id()
+    print(dog_list[0].name)
+    seagull_1.scream()
+    print("Seagulls eat {}".format(seagull_1.food))
 
-dog_list[0].name = "Tata"
-print(dog_list[0].name)
-new_seagull.scream()
+
+if __name__ == "__main__":
+    use_obj()
